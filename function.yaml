@@ -1,0 +1,16 @@
+---
+apiVersion: "nuclio.io/v1beta1"
+kind: "NuclioFunction"
+spec:
+  description: test
+  runtime: "python:3.6"
+  handler: "encrypt:encrypt"
+  minReplicas: 1
+  maxReplicas: 1
+
+  build:
+    commands:
+    - "apk update"
+    - "apk add --no-cache gcc g++ make libffi-dev openssl-dev"
+    - "pip install simple-crypt"
+...
